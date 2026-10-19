@@ -309,6 +309,76 @@ footer{border-top:1px solid var(--line);padding:26px 18px;text-align:center;colo
   }
 }
 
+
+  
+/* ===== REMOVE THE HARSH COLOR CUT BETWEEN SECTIONS ===== */
+
+/* ใช้พื้นหลังร่วมกันทั้งหน้า ไม่ให้สีเปลี่ยนตามแต่ละ section */
+html,
+body {
+  background: #05060c !important;
+}
+
+body {
+  background-image: none !important;
+}
+
+/* ปิดพื้นหลังเดิมที่ทำให้ My Profile มีโทนสีต่างออกไป */
+#home,
+#about,
+#personality {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* แสงบรรยากาศร่วมกันทั้งหน้า */
+body::before {
+  background-image:
+    linear-gradient(
+      rgba(110, 120, 160, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(110, 120, 160, 0.025) 1px,
+      transparent 1px
+    ) !important;
+  background-size: 56px 56px;
+  opacity: 0.55 !important;
+}
+
+/* ปิดแสงพื้นหลังเฉพาะส่วนที่ทำให้สีตัดกัน */
+#personality::before {
+  box-shadow: none !important;
+}
+
+/* คงแสงแดงไว้เฉพาะบริเวณรูป SOUL */
+#personality .personality-cutout {
+  background:
+    radial-gradient(
+      ellipse at 50% 48%,
+      rgba(255, 25, 54, 0.12),
+      transparent 48%
+    ),
+    #05060c !important;
+}
+
+/* คงพื้นหลังแผงข้อมูลให้เข้ากับพื้นหลังหลัก */
+#personality .personality-content,
+#personality .personality-summary {
+  background-color: #070810 !important;
+}
+
+/* มือถือและคอมพิวเตอร์ใช้พื้นหลังชุดเดียวกัน */
+@media (max-width: 760px) {
+  #home,
+  #about,
+  #personality {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+}
+
 </style>
 </head>
 <body>
