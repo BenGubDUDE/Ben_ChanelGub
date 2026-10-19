@@ -379,6 +379,1131 @@ body::before {
   }
 }
 
+  
+
+/* =========================================================
+   BEN_CHANELGUB — SOCIAL APP PREMIUM REDESIGN
+   Shared background + glass cards + smooth animations
+========================================================= */
+
+:root {
+  --bg: #080914;
+  --bg2: #0d1020;
+  --panel: rgba(18, 21, 40, .78);
+  --panel-hover: rgba(28, 32, 57, .92);
+  --text: #f4f5ff;
+  --muted: #a5aec9;
+  --cyan: #52efff;
+  --pink: #ff77bd;
+  --purple: #a78bfa;
+  --line: rgba(167, 139, 250, .22);
+  --shadow:
+    0 12px 35px rgba(0, 0, 0, .22),
+    0 0 25px rgba(167, 139, 250, .07);
+}
+
+/* ===== 1. ONE UNIFIED BACKGROUND ===== */
+
+html {
+  background: #080914;
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  background: #080914 !important;
+  color: var(--text);
+}
+
+/* One continuous atmospheric background for the entire page */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: .85;
+  background:
+    radial-gradient(
+      ellipse at 12% 12%,
+      rgba(111, 91, 190, .13),
+      transparent 37%
+    ),
+    radial-gradient(
+      ellipse at 90% 36%,
+      rgba(47, 145, 170, .09),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 48% 78%,
+      rgba(112, 60, 130, .07),
+      transparent 40%
+    ),
+    #080914;
+}
+
+/* A subtle social-app grid */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .16;
+  background-image:
+    linear-gradient(rgba(160, 170, 220, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(160, 170, 220, .035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, #000, transparent 85%);
+}
+
+/* Do not introduce a new solid background at section boundaries */
+main,
+main > section,
+#home,
+#about,
+#personality,
+#works,
+#social {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Add shared atmosphere rather than separate background colors */
+main > section {
+  position: relative;
+  isolation: isolate;
+}
+
+main > section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset: 0;
+  opacity: .75;
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(167, 139, 250, .035),
+      transparent 55%
+    );
+}
+
+/* ===== 2. SOCIAL APP NAVBAR ===== */
+
+.topbar {
+  padding: 12px clamp(14px, 4vw, 54px);
+  background: rgba(8, 9, 20, .78) !important;
+  border-bottom: 1px solid rgba(167, 139, 250, .18);
+  box-shadow: 0 8px 35px rgba(0, 0, 0, .12);
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+  transition: background .3s ease, border-color .3s ease;
+}
+
+.brand {
+  transition: transform .3s ease, filter .3s ease;
+}
+
+.brand:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 0 12px rgba(167, 139, 250, .38));
+}
+
+.nav a {
+  position: relative;
+  overflow: hidden;
+  background: rgba(23, 26, 48, .62);
+  border-color: rgba(167, 139, 250, .19);
+  transition:
+    transform .28s ease,
+    background .28s ease,
+    border-color .28s ease,
+    box-shadow .28s ease;
+}
+
+.nav a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(
+    110deg,
+    transparent,
+    rgba(167, 139, 250, .12),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform .5s ease, opacity .3s ease;
+}
+
+.nav a:hover::before {
+  opacity: 1;
+  transform: translateX(100%);
+}
+
+.nav a:hover {
+  background: rgba(35, 37, 65, .8);
+  border-color: rgba(167, 139, 250, .55);
+  box-shadow: 0 5px 20px rgba(167, 139, 250, .1);
+}
+
+.icon-btn {
+  background: rgba(23, 26, 48, .75);
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    background .3s ease;
+}
+
+.icon-btn:hover {
+  transform: rotate(45deg);
+  background: rgba(38, 38, 67, .9);
+}
+
+/* ===== 3. UNIFIED SECTION HEADINGS ===== */
+
+.section-head {
+  position: relative;
+  z-index: 1;
+}
+
+.section-head .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 12px;
+  margin-bottom: 7px;
+  border: 1px solid rgba(167, 139, 250, .18);
+  border-radius: 999px;
+  background: rgba(167, 139, 250, .055);
+  font-size: .72rem;
+  letter-spacing: .13em;
+}
+
+.section-head .eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px rgba(82, 239, 255, .7);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+.gradient-text {
+  background: linear-gradient(
+    105deg,
+    #ffffff 0%,
+    #c6b5ff 32%,
+    #a78bfa 56%,
+    #ffb5df 85%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-flow 9s linear infinite;
+}
+
+@keyframes gradient-flow {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* ===== 4. HOMEPAGE SOCIAL PROFILE CARD ===== */
+
+#home {
+  overflow: hidden;
+}
+
+#home .hero-grid {
+  gap: clamp(28px, 5vw, 68px);
+}
+
+#home .hero-copy {
+  animation: hero-copy-in .9s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+#home .lead {
+  line-height: 1.95;
+}
+
+#home .tagline {
+  position: relative;
+  padding: 14px 18px;
+  border: 1px solid rgba(167, 139, 250, .19);
+  border-left: 3px solid var(--purple);
+  border-radius: 0 16px 16px 0;
+  background: linear-gradient(
+    110deg,
+    rgba(167, 139, 250, .09),
+    rgba(18, 21, 40, .22)
+  );
+  backdrop-filter: blur(10px);
+}
+
+/* Give the homepage image a social-profile frame */
+#home .portrait-wrap {
+  min-height: 440px;
+  perspective: 1000px;
+  animation: hero-portrait-in 1s .12s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+#home .portrait-frame {
+  width: min(100%, 390px);
+  aspect-ratio: 4 / 5;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(190, 175, 255, .55);
+  border-radius: 30px;
+  padding: 7px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, .12),
+    rgba(167, 139, 250, .12) 42%,
+    rgba(82, 239, 255, .08)
+  );
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .035),
+    0 0 0 7px rgba(167, 139, 250, .035),
+    0 24px 65px rgba(0, 0, 0, .35),
+    0 0 38px rgba(167, 139, 250, .12);
+  transition:
+    transform .45s cubic-bezier(.2, .7, .2, 1),
+    box-shadow .45s ease,
+    border-color .45s ease;
+}
+
+/* Animated frame highlight */
+#home .portrait-frame::before {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 24px;
+  background: linear-gradient(
+    120deg,
+    transparent 15%,
+    rgba(255, 255, 255, .13) 32%,
+    transparent 48%
+  );
+  background-size: 220% 100%;
+  background-position: 150% 0;
+  animation: frame-shine 7s ease-in-out infinite;
+}
+
+/* Corner decorations */
+#home .portrait-frame::after {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  inset: 13px;
+  pointer-events: none;
+  border-radius: 19px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  box-shadow: inset 0 0 20px rgba(167, 139, 250, .04);
+}
+
+#home .portrait-wrap:hover .portrait-frame {
+  transform: translateY(-5px) rotateY(-2deg);
+  border-color: rgba(82, 239, 255, .65);
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, .4),
+    0 0 42px rgba(167, 139, 250, .2),
+    0 0 70px rgba(82, 239, 255, .07);
+}
+
+#home .portrait-frame img {
+  z-index: 1;
+  inset: 7px;
+  width: calc(100% - 14px);
+  height: calc(100% - 14px);
+  border-radius: 23px;
+  object-fit: cover;
+  object-position: center;
+  background: #101223;
+  transition:
+    opacity .65s ease,
+    transform 1s cubic-bezier(.2, .7, .2, 1),
+    filter .5s ease;
+}
+
+#home .portrait-frame img:hover {
+  transform: scale(1.025);
+}
+
+/* Slideshow transition states */
+#home .portrait-frame img.slide-changing {
+  opacity: 0;
+  transform: scale(.96);
+  filter: blur(5px);
+}
+
+#home .portrait-frame .portrait-placeholder {
+  position: absolute;
+  z-index: 0;
+  inset: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 23px;
+  background:
+    radial-gradient(
+      ellipse at 50% 35%,
+      rgba(167, 139, 250, .16),
+      transparent 65%
+    ),
+    #101223;
+}
+
+#home .portrait-placeholder strong {
+  font: 900 2rem/1.2 Manrope, sans-serif;
+  letter-spacing: .04em;
+  background: linear-gradient(120deg, #fff, #c6b5ff, #52efff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+#home .float-chip {
+  z-index: 6;
+  padding: 11px 16px;
+  border-radius: 15px;
+  background: rgba(17, 19, 38, .86);
+  border-color: rgba(190, 175, 255, .32);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, .22),
+    0 0 18px rgba(167, 139, 250, .09);
+  backdrop-filter: blur(18px);
+  animation: chip-float 4s ease-in-out infinite;
+}
+
+#home .chip-two {
+  animation-delay: -2s;
+}
+
+#home .scroll-hint {
+  animation: hint-float 2.5s ease-in-out infinite;
+}
+
+/* Slideshow indicators, injected by JavaScript */
+#home .slideshow-indicators {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  bottom: 17px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 999px;
+  background: rgba(8, 9, 20, .72);
+  backdrop-filter: blur(14px);
+}
+
+#home .slideshow-dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(220, 225, 255, .35);
+  cursor: pointer;
+  transition: width .35s ease, background .35s ease;
+}
+
+#home .slideshow-dot.active {
+  width: 23px;
+  background: linear-gradient(90deg, var(--purple), var(--cyan));
+  box-shadow: 0 0 12px rgba(167, 139, 250, .3);
+}
+
+/* ===== 5. PROFILE INFORMATION CARDS ===== */
+
+#about .about-layout {
+  gap: clamp(28px, 5vw, 68px);
+}
+
+#about .profile-cutout {
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, .16));
+  transition: transform .5s ease, filter .5s ease;
+}
+
+#about .profile-cutout:hover {
+  transform: translateY(-5px);
+  filter: drop-shadow(0 20px 30px rgba(167, 139, 250, .15));
+}
+
+#about .about-info {
+  gap: 12px;
+}
+
+#about .info-card {
+  position: relative;
+  overflow: hidden;
+  padding: 17px;
+  border: 1px solid rgba(167, 139, 250, .16);
+  border-radius: 19px;
+  background: linear-gradient(
+    145deg,
+    rgba(25, 28, 50, .78),
+    rgba(14, 16, 31, .67)
+  );
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .09);
+  backdrop-filter: blur(12px);
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    background .3s ease,
+    box-shadow .3s ease;
+}
+
+#about .info-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(167, 139, 250, .55),
+    transparent
+  );
+  opacity: .55;
+}
+
+#about .info-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(167, 139, 250, .43);
+  background: linear-gradient(
+    145deg,
+    rgba(32, 34, 60, .92),
+    rgba(17, 19, 37, .88)
+  );
+  box-shadow: 0 14px 32px rgba(0, 0, 0, .18);
+}
+
+#about .info-card small {
+  font-size: .7rem;
+  letter-spacing: .12em;
+}
+
+#about .info-card p {
+  color: #e5e8fa;
+  line-height: 1.75;
+}
+
+/* ===== 6. PERSONALITY PROFILE — CYBER SOUL CHAMBER ===== */
+
+#personality {
+  overflow: hidden;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+/* Remove the large enclosing red border from the section */
+#personality::before {
+  border-color: rgba(255, 25, 58, .13) !important;
+  box-shadow: none !important;
+}
+
+/* The heading should blend into the unified background */
+#personality .section-head {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 30, 70, .055),
+    rgba(167, 139, 250, .025) 48%,
+    transparent
+  ) !important;
+  border-color: rgba(255, 70, 100, .28) !important;
+}
+
+/* Keep the existing red soul theme, but refine the image chamber */
+#personality .personality-cutout {
+  position: relative;
+  min-height: 500px;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 12px;
+  border: 1px solid rgba(255, 55, 85, .32);
+  border-radius: 22px;
+  clip-path: none;
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(255, 20, 50, .18),
+      transparent 57%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(20, 10, 22, .8),
+      rgba(8, 9, 20, .55)
+    ) !important;
+  box-shadow:
+    inset 0 0 40px rgba(255, 0, 45, .035),
+    0 15px 45px rgba(0, 0, 0, .17);
+}
+
+/* Energy ring behind the image */
+#personality .personality-cutout::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 76%;
+  aspect-ratio: 1;
+  left: 12%;
+  top: 18%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 30, 60, .2),
+    rgba(255, 30, 60, .07) 43%,
+    transparent 70%
+  );
+  filter: blur(12px);
+  animation: soul-aura 4.5s ease-in-out infinite;
+}
+
+/* Rotating technological ring */
+#personality .personality-cutout::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 11%;
+  top: 15%;
+  width: 78%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle,
+      transparent 54%,
+      rgba(255, 45, 75, .5) 54.5%,
+      transparent 55.1%
+    ),
+    radial-gradient(
+      circle,
+      transparent 70%,
+      rgba(255, 45, 75, .2) 70.5%,
+      transparent 71%
+    ),
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(255, 45, 75, .7) 0deg 1deg,
+      transparent 1deg 24deg
+    );
+  mask-image: radial-gradient(
+    circle,
+    transparent 0 57%,
+    #000 58% 73%,
+    transparent 74%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle,
+    transparent 0 57%,
+    #000 58% 73%,
+    transparent 74%
+  );
+  animation: soul-ring-rotate 32s linear infinite;
+}
+
+/* Make the cutout image stand out from the atmosphere */
+#personality .personality-cutout img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: clamp(360px, 42vw, 520px);
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 5px rgba(255, 20, 50, .75))
+    drop-shadow(0 0 18px rgba(255, 0, 45, .3));
+  animation: soul-image-float 5s ease-in-out infinite;
+  transition: filter .45s ease, transform .45s ease;
+}
+
+#personality .personality-cutout:hover img {
+  filter:
+    drop-shadow(0 0 8px rgba(255, 20, 50, .95))
+    drop-shadow(0 0 30px rgba(255, 0, 45, .42));
+}
+
+/* Corner HUD markers */
+#personality .soul-hud {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  font: 800 10px/1.5 Manrope, sans-serif;
+  letter-spacing: 1.8px;
+  color: rgba(255, 105, 125, .8);
+}
+
+#personality .soul-hud-top {
+  top: 17px;
+  left: 18px;
+}
+
+#personality .soul-hud-bottom {
+  right: 18px;
+  bottom: 17px;
+  text-align: right;
+}
+
+/* The main dashboard is a separate glass panel */
+#personality .personality-content {
+  border: 1px solid rgba(255, 70, 100, .27);
+  border-radius: 22px;
+  clip-path: none;
+  background: linear-gradient(
+    145deg,
+    rgba(20, 12, 25, .79),
+    rgba(10, 11, 23, .86)
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .025),
+    0 18px 50px rgba(0, 0, 0, .15);
+  backdrop-filter: blur(15px);
+}
+
+#personality .soul-title {
+  gap: 12px;
+  line-height: 1.6;
+}
+
+#personality .radar-panel {
+  border-radius: 16px;
+  padding: 8px;
+  background: rgba(255, 255, 255, .012);
+}
+
+#personality .trait-bars {
+  gap: 17px;
+}
+
+#personality .trait-row {
+  transition: transform .25s ease;
+}
+
+#personality .trait-row:hover {
+  transform: translateX(4px);
+}
+
+#personality .trait-track {
+  height: 17px;
+  border-radius: 999px;
+  padding: 2px;
+  border-color: rgba(160, 165, 200, .18);
+  background: rgba(0, 0, 0, .32);
+}
+
+#personality .trait-track > div {
+  border-radius: 999px;
+}
+
+#personality .personality-summary {
+  border-radius: 16px;
+  clip-path: none;
+  border: 1px solid rgba(255, 70, 100, .25);
+  border-left: 3px solid rgba(255, 32, 56, .85);
+  background: linear-gradient(
+    110deg,
+    rgba(255, 30, 60, .055),
+    rgba(15, 13, 26, .5)
+  ) !important;
+}
+
+/* ===== 7. WORK CARDS ===== */
+
+#works .work-card {
+  border-radius: 23px;
+  background: linear-gradient(
+    145deg,
+    rgba(24, 27, 49, .85),
+    rgba(13, 15, 30, .83)
+  );
+  border-color: rgba(167, 139, 250, .18);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, .13);
+  backdrop-filter: blur(14px);
+  transition:
+    transform .4s cubic-bezier(.2, .7, .2, 1),
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+#works .work-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--work-glow, var(--purple));
+  opacity: .75;
+  transform: scaleX(.3);
+  transform-origin: left;
+  transition: transform .4s ease;
+}
+
+#works .work-card::after {
+  content: "";
+  position: absolute;
+  right: -70px;
+  top: -70px;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: var(--work-glow, var(--purple));
+  opacity: .035;
+  filter: blur(25px);
+  transition: opacity .35s ease, transform .5s ease;
+}
+
+#works .work-card:hover {
+  transform: translateY(-7px);
+  border-color: color-mix(
+    in srgb,
+    var(--work-glow, var(--purple)) 55%,
+    transparent
+  );
+  box-shadow:
+    0 22px 45px rgba(0, 0, 0, .2),
+    0 0 25px color-mix(
+      in srgb,
+      var(--work-glow, var(--purple)) 8%,
+      transparent
+    );
+}
+
+#works .work-card:hover::before {
+  transform: scaleX(1);
+}
+
+#works .work-card:hover::after {
+  opacity: .11;
+  transform: scale(1.25);
+}
+
+/* ===== 8. SOCIAL LINKS ===== */
+
+#social .social-stage {
+  gap: 17px;
+}
+
+#social .social-card {
+  border-radius: 23px;
+  border-color: color-mix(
+    in srgb,
+    var(--platform) 28%,
+    transparent
+  );
+  background: linear-gradient(
+    145deg,
+    rgba(25, 27, 48, .86),
+    rgba(13, 15, 29, .82)
+  );
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .16);
+  backdrop-filter: blur(17px);
+  transition:
+    transform .35s cubic-bezier(.2, .7, .2, 1),
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+#social .social-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    125deg,
+    color-mix(in srgb, var(--platform) 12%, transparent),
+    transparent 58%
+  );
+  transition: opacity .35s ease;
+}
+
+#social .social-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: color-mix(
+    in srgb,
+    var(--platform) 65%,
+    transparent
+  );
+  box-shadow:
+    0 20px 42px rgba(0, 0, 0, .23),
+    0 0 24px color-mix(
+      in srgb,
+      var(--platform) 12%,
+      transparent
+    );
+}
+
+#social .social-card:hover::before {
+  opacity: 1;
+}
+
+#social .platform-icon {
+  position: relative;
+  z-index: 1;
+  border: 1px solid color-mix(
+    in srgb,
+    var(--platform) 22%,
+    transparent
+  );
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+#social .social-card:hover .platform-icon {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 0 20px color-mix(
+    in srgb,
+    var(--platform) 15%,
+    transparent
+  );
+}
+
+#social .center-person img {
+  animation: hero-portrait-float 5s ease-in-out infinite;
+}
+
+footer {
+  position: relative;
+  background: rgba(8, 9, 20, .35);
+  border-color: rgba(167, 139, 250, .16);
+  backdrop-filter: blur(12px);
+}
+
+/* ===== 9. SMOOTHER REVEAL ANIMATIONS ===== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(2px);
+  transition:
+    opacity .75s ease,
+    transform .75s cubic-bezier(.16, 1, .3, 1),
+    filter .75s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+  filter: blur(0);
+}
+
+.slide-in-left {
+  transform: translateX(-45px);
+}
+
+.slide-in-right {
+  transform: translateX(45px);
+}
+
+.slide-in-left.visible,
+.slide-in-right.visible {
+  transform: translateX(0);
+}
+
+.rise-in {
+  transform: translateY(35px) scale(.97);
+}
+
+.rise-in.visible {
+  transform: translateY(0) scale(1);
+}
+
+@keyframes hero-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes hero-portrait-in {
+  from {
+    opacity: 0;
+    transform: translate(25px, 12px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes hero-portrait-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes chip-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+
+@keyframes hint-float {
+  0%, 100% { opacity: .65; }
+  50% { opacity: 1; }
+}
+
+@keyframes frame-shine {
+  0%, 65% {
+    background-position: 150% 0;
+  }
+  85%, 100% {
+    background-position: -150% 0;
+  }
+}
+
+@keyframes soul-aura {
+  0%, 100% {
+    transform: scale(.92);
+    opacity: .7;
+  }
+  50% {
+    transform: scale(1.07);
+    opacity: 1;
+  }
+}
+
+@keyframes soul-ring-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes soul-image-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+/* ===== 10. MOBILE RESPONSIVENESS ===== */
+
+@media (max-width: 760px) {
+  #home .portrait-wrap {
+    min-height: 350px;
+  }
+
+  #home .portrait-frame {
+    width: min(78%, 320px);
+    border-radius: 25px;
+  }
+
+  #home .portrait-frame::after {
+    border-radius: 19px;
+  }
+
+  #home .float-chip {
+    font-size: .72rem;
+    padding: 9px 12px;
+  }
+
+  #about .info-card {
+    padding: 15px;
+  }
+
+  #personality .personality-cutout {
+    min-height: 360px;
+    border-radius: 20px;
+  }
+
+  #personality .personality-cutout img {
+    height: clamp(300px, 78vw, 390px);
+  }
+
+  #personality .personality-content {
+    border-radius: 19px;
+  }
+
+  #social .social-stage {
+    gap: 11px;
+  }
+
+  #social .social-card {
+    border-radius: 18px;
+  }
+
+  .reveal {
+    transform: translateY(16px);
+  }
+
+  .slide-in-left {
+    transform: translateX(-22px);
+  }
+
+  .slide-in-right {
+    transform: translateX(22px);
+  }
+}
+
+@media (max-width: 420px) {
+  #home .portrait-wrap {
+    min-height: 300px;
+  }
+
+  #home .portrait-frame {
+    width: 76%;
+  }
+
+  #personality .personality-cutout {
+    min-height: 320px;
+  }
+
+  #personality .soul-hud {
+    font-size: 8px;
+  }
+}
+
+/* Accessibility: preserve a calm experience when requested */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -400,10 +1525,32 @@ body::before {
     </div>
     <div class="portrait-wrap slide-in-right reveal">
       <div class="float-chip chip-one">✦ MY PROFILE</div>
-      <div class="portrait-frame">
-        <img src="me1.png" alt="รูปโปรไฟล์ของ Ben" onerror="this.style.display='none'">
-        <div class="portrait-placeholder"><strong>YOUR<br>PHOTO</strong>ใส่รูปของคุณที่<br><code>me1.png</code></div>
-      </div>
+      
+<div class="portrait-frame" id="heroSlideshow">
+  <img
+    id="heroSlideImage"
+    src="me1.png"
+    alt="รูปโปรไฟล์ของ Ben"
+  >
+
+  <div class="portrait-placeholder" id="heroSlidePlaceholder">
+    <strong>YOUR<br>PHOTO</strong>
+    <span>ใส่รูปของคุณในโฟลเดอร์เว็บไซต์</span>
+    <code>me1.png</code>
+  </div>
+
+  <div class="slideshow-indicators" id="heroSlideIndicators"
+       aria-label="เลือกภาพโปรไฟล์">
+    <button class="slideshow-dot active" type="button"
+            aria-label="รูปที่ 1"></button>
+    <button class="slideshow-dot" type="button"
+            aria-label="รูปที่ 2"></button>
+    <button class="slideshow-dot" type="button"
+            aria-label="รูปที่ 3"></button>
+    <button class="slideshow-dot" type="button"
+            aria-label="รูปที่ 4"></button>
+  </div>
+</div>
       <div class="float-chip chip-two">WELCOME IN ✦</div>
     </div>
   </div>
@@ -432,10 +1579,30 @@ body::before {
     <p class="lead">คุณลักษณะทั้งเจ็ดที่รวมกันเป็นตัวตนของฉัน</p>
   </div>
   <div class="personality-layout">
-    <div class="personality-cutout reveal">
-      <img src="imagessoul.png" alt="รูปสำหรับ Personality Profile" onerror="this.style.display='none'">
-      <div class="portrait-placeholder"><strong>MY SOUL</strong><span>ใส่รูป PNG พื้นหลังโปร่งใส</span><code>imagessoul.png</code></div>
-    </div>
+    
+<div class="personality-cutout reveal">
+  <div class="soul-hud soul-hud-top">
+    SOUL ANALYSIS // BC-001<br>
+    SYSTEM STATUS: ACTIVE
+  </div>
+
+  <img
+    src="imagessoul.png"
+    alt="รูปสำหรับ Personality Profile"
+    onerror="this.style.display='none'"
+  >
+
+  <div class="portrait-placeholder">
+    <strong>MY SOUL</strong>
+    <span>ใส่รูป PNG พื้นหลังโปร่งใส</span>
+    <code>imagessoul.png</code>
+  </div>
+
+  <div class="soul-hud soul-hud-bottom">
+    SEVEN TRAITS DETECTED<br>
+    SOUL SIGNATURE // 001
+  </div>
+</div>
     <div class="personality-content reveal">
       <div class="soul-title">◇ PERSONALITY PROFILE <span class="gradient-text">/ 7 TRAITS</span></div>
       <div class="personality-dashboard">
@@ -497,13 +1664,227 @@ body::before {
 </main>
 <footer><div>เว็บไซต์นี้สร้างขึ้นเพื่อ <strong>แนะนำตัวและรวบรวมช่องทางติดตามของ Ben_ChanelGub</strong></div><div>Designed with <strong>ChatGPT</strong> ✨ (not 100%) and Made with care, maybe?</div></footer>
 <script>
-document.getElementById('refreshBtn').addEventListener('click',()=>window.location.reload());
-const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{const el=entry.target;if(entry.isIntersecting){el.classList.remove('visible');void el.offsetWidth;el.classList.add('visible')}else{el.classList.remove('visible')}})},{threshold:.16,rootMargin:'0px 0px -3% 0px'});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.querySelectorAll('.profile-cutout img,.personality-cutout img,.portrait-frame img,.center-person img').forEach(img=>{
- const hidePlaceholder=()=>{const p=img.parentElement.querySelector('.portrait-placeholder');if(p)p.style.display='none'};
- if(img.complete&&img.naturalWidth>0)hidePlaceholder();else img.addEventListener('load',hidePlaceholder,{once:true});
+
+/* ================================================
+   BEN_CHANELGUB — INTERACTION ENGINE
+================================================ */
+
+/* 1. Refresh button */
+document.getElementById('refreshBtn')?.addEventListener('click', () => {
+  window.location.reload();
 });
+
+/* 2. Reveal animations */
+const revealElements = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const element = entry.target;
+
+      if (entry.isIntersecting) {
+        element.classList.add('visible');
+      } else {
+        /*
+         * Remove the class when the element leaves the viewport.
+         * Its animation will replay when the user scrolls back.
+         */
+        element.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -4% 0px'
+  });
+
+  revealElements.forEach(element => {
+    revealObserver.observe(element);
+  });
+} else {
+  revealElements.forEach(element => {
+    element.classList.add('visible');
+  });
+}
+
+/* 3. Hide placeholders when images load */
+document.querySelectorAll(
+  '.profile-cutout img, ' +
+  '.personality-cutout img, ' +
+  '.portrait-frame img, ' +
+  '.center-person img'
+).forEach(img => {
+  const hidePlaceholder = () => {
+    const placeholder =
+      img.parentElement.querySelector('.portrait-placeholder');
+
+    if (placeholder) {
+      placeholder.style.display = 'none';
+    }
+  };
+
+  if (img.complete && img.naturalWidth > 0) {
+    hidePlaceholder();
+  } else {
+    img.addEventListener('load', hidePlaceholder, { once: true });
+  }
+});
+
+/* 4. Homepage slideshow — change every 10 seconds */
+(() => {
+  const slideshow = document.getElementById('heroSlideshow');
+  const image = document.getElementById('heroSlideImage');
+  const placeholder = document.getElementById('heroSlidePlaceholder');
+  const indicators = document.getElementById('heroSlideIndicators');
+
+  if (!slideshow || !image || !indicators) return;
+
+  /*
+   * Add or remove filenames here.
+   * The first image is the default profile image.
+   */
+  const slides = [
+    'me1.png',
+    'me2.png',
+    'me3.png',
+    'me4.png'
+  ];
+
+  const dots = Array.from(
+    indicators.querySelectorAll('.slideshow-dot')
+  );
+
+  let currentIndex = 0;
+  let timer = null;
+  let transitionBusy = false;
+
+  /*
+   * Update indicators without changing the frame.
+   */
+  function updateIndicators(index) {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+      dot.setAttribute('aria-pressed', String(i === index));
+    });
+  }
+
+  /*
+   * Preload an image before switching to it.
+   * If a file is missing, keep the currently displayed image.
+   */
+  function changeSlide(index) {
+    if (transitionBusy || index === currentIndex) return;
+
+    const nextImage = new Image();
+    nextImage.src = slides[index];
+
+    transitionBusy = true;
+
+    nextImage.onload = () => {
+      image.classList.add('slide-changing');
+
+      window.setTimeout(() => {
+        image.src = slides[index];
+        image.alt = `รูปโปรไฟล์ของ Ben ภาพที่ ${index + 1}`;
+
+        if (placeholder) {
+          placeholder.style.display = 'none';
+        }
+
+        currentIndex = index;
+        updateIndicators(currentIndex);
+
+        requestAnimationFrame(() => {
+          image.classList.remove('slide-changing');
+          transitionBusy = false;
+        });
+      }, 350);
+    };
+
+    nextImage.onerror = () => {
+      transitionBusy = false;
+      console.warn('ไม่พบไฟล์รูปภาพ:', slides[index]);
+    };
+  }
+
+  /*
+   * Start a fresh 10-second interval.
+   */
+  function restartTimer() {
+    if (timer !== null) {
+      window.clearInterval(timer);
+    }
+
+    timer = window.setInterval(() => {
+      const nextIndex = (currentIndex + 1) % slides.length;
+      changeSlide(nextIndex);
+    }, 10000);
+  }
+
+  /*
+   * Click the dots to select a picture manually.
+   */
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      if (index >= slides.length) return;
+
+      changeSlide(index);
+      restartTimer();
+    });
+  });
+
+  /*
+   * Preload future images to minimize visual delay.
+   */
+  slides.slice(1).forEach(src => {
+    const preload = new Image();
+    preload.src = src;
+  });
+
+  /*
+   * If the user returns to the browser tab,
+   * restart the interval to avoid unexpected timing.
+   */
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      restartTimer();
+    } else if (timer !== null) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  });
+
+  /*
+   * Respect reduced-motion settings by keeping
+   * transitions short; the slideshow still works.
+   */
+  updateIndicators(0);
+  restartTimer();
+})();
+
+/* 5. Small parallax effect on the homepage portrait.
+   Disabled for touchscreens and reduced-motion users. */
+(() => {
+  const wrap = document.querySelector('#home .portrait-wrap');
+  const frame = document.querySelector('#home .portrait-frame');
+
+  if (!wrap || !frame) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+
+  wrap.addEventListener('mousemove', event => {
+    const rect = wrap.getBoundingClientRect();
+
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+    frame.style.transform =
+      `perspective(1000px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg)`;
+  });
+
+  wrap.addEventListener('mouseleave', () => {
+    frame.style.transform = '';
+  });
+})();
 </script>
 </body>
 </html>
